@@ -49,7 +49,7 @@ var displayCityWeather=function(data, allData){
     var cityUVIndex=document.createElement("p");
     var cityUVIndexNumber=document.createElement("span");
     cityName.textContent=data.name;
-    iconImg.src = "http://openweathermap.org/img/wn/"+ data.weather[0].icon +".png";
+    iconImg.src = "https://openweathermap.org/img/wn/"+ data.weather[0].icon +".png";
     cityName.appendChild(iconImg);
     cityTemp.textContent="Temperature: "+data.main.temp+" ⁰F";
     cityHum.textContent="Humidity: "+data.main.humidity+"%";
@@ -92,7 +92,7 @@ var displayForecast= function(dayForecast){
     //We create the cards for each day
     for (var i=1; i<=5; i++){
         var dateForecast=new Date(dayForecast.daily[i].dt*1000);
-        var iconForecast="http://openweathermap.org/img/wn/"+ dayForecast.daily[i].weather[0].icon +".png";
+        var iconForecast="https://openweathermap.org/img/wn/"+ dayForecast.daily[i].weather[0].icon +".png";
         var humidityForecast=dayForecast.daily[i].humidity;
         var tempForecast=dayForecast.daily[i].temp.day;
 

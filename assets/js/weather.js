@@ -4,7 +4,7 @@ var arrSearchHistory = [];
 getSearchHistory();
 //localStorage.clear();
 // function to access the city's information based on user's input
-function getWeatherByCity(city){
+var getWeatherByCity =function(city){
     var apiKey = "id=524901&appid=8d033d7f143f0e2af2920c11bc814694";
     var apiWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&units=imperial&"+apiKey;
     // return fetch(apiWeatherUrl)
@@ -12,7 +12,7 @@ function getWeatherByCity(city){
     .then(function(response){
         //request was successful
         if (response.ok){
-            response.json()
+            return response.json()
             .then (function(data) {
                 //Create new fetch to obtain data of UV index.
                 var apiOnecallUrl = "https://api.openweathermap.org/data/2.5/onecall?lat="+data.coord.lat+"&lon="+data.coord.lon+"&units=imperial&"+apiKey;
@@ -20,6 +20,7 @@ function getWeatherByCity(city){
                 .then(function(response){
                     if (response.ok){
                         response.json().then (function(onecallData) {
+                            // Display the current city's info
                             displayCityWeather(data, onecallData);  
                         });
                     }
@@ -126,9 +127,9 @@ var displayForecast= function(dayForecast){
 //
 function searchBttnClicked(){
     var cityName = document.getElementById("city-input").value;
-    getWeatherByCity(cityName);  
+    getWeatherByCity(cityName); 
     //Now update the search history
-    setSearchHistory(cityName);   
+    setSearchHistory(cityName);
 }
 
 //Display the past search again when a City name is click

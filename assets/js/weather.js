@@ -14,7 +14,7 @@ function getWeatherByCity(city){
             response.json()
             .then (function(data) {
                 setSearchHistory(city);
-                var apiOnecallUrl = "http://api.openweathermap.org/data/2.5/onecall?lat="+data.coord.lat+"&lon="+data.coord.lon+"&"+apiKey;
+                var apiOnecallUrl = "http://api.openweathermap.org/data/2.5/onecall?lat="+data.coord.lat+"&lon="+data.coord.lon+"&units=imperial&"+apiKey;
                 fetch(apiOnecallUrl)
                 .then(function(response){
                     //request was successful
@@ -62,8 +62,40 @@ var displayCityWeather=function(data, allData){
     cityDataEl.appendChild(cityHum);
     cityDataEl.appendChild(cityWind);
     cityDataEl.appendChild(cityUVIndex);
+    displayForecast(allData);
 }
+var displayForecast= function(dayForecast){
+    console.log(dayForecast);
+    for (var i=1; i<=5; i++){
+        var dateForecast=new Date(dayForecast.daily[i].dt*1000);
+        var iconForecast="http://openweathermap.org/img/wn/"+ dayForecast.daily[i].weather[0].icon +".png";
+        var humidityForecast=dayForecast.daily[i].humidity;
+        var tempForecast=dayForecast.daily[i].temp.day;
+        var card =document.createElement("div");
+        card.className="card col-md-2 ml-4 bg-primary text-white";
+        var cardBody =document.createElement("div");
+        cardBody.className="card-body p-3 forecastBody";
+        var cityDate =document.createElement("h4");
+        cityDate.className="card-title";
+        cityDate.textContent=dateForecast.toLocaleDateString();
+        var image =document.createElement ("img");
+        image.src= iconForecast;
+        var temperature = document.createElement("p");
+        temperature.className="card-text forecastTemp";
+        temperature.textContent="Temperature: " + tempForecast + " °F";
+        var humidity = document.createElement("p");
+        humidity.className="card-text forecastHumidity";
+        humidity.textContent="Humidity: " + humidityForecast + "%";
 
+       
+
+        cardBody.append(cityDate, image, temperature, humidity);
+        card.append(cardBody);
+        document.getElementById("day-forecast").append(card); 
+
+    }
+
+}
 function searchBttnClicked(){
     var cityName = document.getElementById("city-input").value;
     //console.log(cityName);

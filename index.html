@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather-Dashboard</title>
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     
-    <title>Weather-Dashboard</title>
+    
 </head>
 <body >
+    <!--Title -->
     <nav class="navbar navbar-dark bg-dark">
         <span class="text-center navbar-brand h1 w-100">Weather Dashboard</span>
     </nav>
     <div class="container-fluid">
+        <!--City name input-->
         <div class="row">
             <div class="col-4 bg-light">
                 <p class="text-md-left my-2 font-weight-bold">Search for a City:</p>
@@ -24,15 +28,19 @@
                         </button>
                     </div>
                 </div>
+            <!--History from local storage-->
                 <ul id="history"></ul>
             </div>
+            <!--Container for City and forecast-->
             <div class="col-8">
                 <div class="container">
+                    <!--Current data row-->
                     <div class="row ">
                         <div class="col-12 card card-body" id="city-data">
                             
                         </div>
-                    </div>
+                </div>
+                    <!--Forecast container-->
                     <div class="row">
                         <div class=" row col-12">
                             <h3>5-Day Forecast</h3>

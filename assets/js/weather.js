@@ -25,7 +25,6 @@ function getWeatherByCity(city){
                     }
                     else{
                         // if not successful, redirect to homepage
-                        console.log("Could not get onecall");
                         document.location.replace("./index.html");
                     }
                 });
@@ -41,8 +40,6 @@ function getWeatherByCity(city){
 //function to display current City information.
 var displayCityWeather=function(data, allData){
     var cityDataEl = document.getElementById("city-data");  
-    console.log(data);
-    console.log(allData);
     cityDataEl.innerHTML="";
     var cityName=document.createElement("p");
     var iconImg = document.createElement("img");
@@ -61,7 +58,6 @@ var displayCityWeather=function(data, allData){
     cityUVIndexNumber.textContent=allData.daily[0].uvi;
     //Compare UV index to color weather conditions.
     var uviNumber = parseFloat(cityUVIndexNumber.textContent);
-    console.log(uviNumber);
     switch(true){
         case (uviNumber < 3):
             cityUVIndexNumber.style.background = "lime";
@@ -92,7 +88,6 @@ var displayCityWeather=function(data, allData){
 }
 // Function to display future forecast
 var displayForecast= function(dayForecast){
-    console.log(dayForecast);
     document.getElementById("day-forecast").innerHTML="";
     //We create the cards for each day
     for (var i=1; i<=5; i++){
@@ -121,9 +116,6 @@ var displayForecast= function(dayForecast){
         var humidity = document.createElement("p");
         humidity.className="card-text forecastHumidity";
         humidity.textContent="Humidity: " + humidityForecast + "%";
-
-       
-
         cardBody.append(cityDate, image, temperature, humidity);
         card.append(cardBody);
         document.getElementById("day-forecast").append(card); 
@@ -134,17 +126,15 @@ var displayForecast= function(dayForecast){
 //
 function searchBttnClicked(){
     var cityName = document.getElementById("city-input").value;
-    //console.log(cityName);
     getWeatherByCity(cityName);  
     //Now update the search history
     setSearchHistory(cityName);
+    
+    
 }
 //Display the past search again when a City name is click
 function bttnSearchHistoryClick(clickedElement){
-    console.log(clickedElement.path[0]);
-    console.log(clickedElement);
     var cityName = clickedElement.path[0].textContent;
-    console.log(cityName);
     getWeatherByCity(cityName);
 }
 //Saves City's name in local storage
@@ -158,7 +148,6 @@ function getSearchHistory(){
     if( arrToLoad = JSON.parse(window.localStorage.getItem("search_history"))){
         arrSearchHistory = arrToLoad;
     }
-    console.log(arrSearchHistory);
     var cityList=document.getElementById("history");
     cityList.innerHTML = "";
     var itemId = 0;

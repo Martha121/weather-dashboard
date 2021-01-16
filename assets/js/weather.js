@@ -3,12 +3,12 @@ var arrSearchHistory = [];
 // Gets the search history when this file is loaded
 getSearchHistory();
 
-function clearHistory(){
+document.getElementById("clear-history").addEventListener("click", function(){
     // Clear the local storage
     localStorage.clear();
     // Reload page
     document.location.replace("./index.html");
-}
+});
 
 // function to access the city's information based on user's input
 var getWeatherByCity =function(city){

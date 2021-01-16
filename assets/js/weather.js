@@ -128,20 +128,21 @@ function searchBttnClicked(){
     var cityName = document.getElementById("city-input").value;
     getWeatherByCity(cityName);  
     //Now update the search history
-    setSearchHistory(cityName);
-    
-    
+    setSearchHistory(cityName);   
 }
+
 //Display the past search again when a City name is click
 function bttnSearchHistoryClick(clickedElement){
     var cityName = clickedElement.path[0].textContent;
     getWeatherByCity(cityName);
 }
+
 //Saves City's name in local storage
 function setSearchHistory(cityName){
     arrSearchHistory.push(cityName);
     window.localStorage.setItem("search_history", JSON.stringify(arrSearchHistory));
 }
+
 //Retrieves and display City's name from local storage
 function getSearchHistory(){
     var arrToLoad;

@@ -6,7 +6,7 @@ getSearchHistory();
 // function to access the city's information based on user's input
 function getWeatherByCity(city){
     var apiKey = "id=524901&appid=8d033d7f143f0e2af2920c11bc814694";
-    var apiWeatherUrl = "http://api.openweathermap.org/data/2.5/weather?q="+city+"&units=imperial&"+apiKey;
+    var apiWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&units=imperial&"+apiKey;
     // return fetch(apiWeatherUrl)
     fetch(apiWeatherUrl)
     .then(function(response){
@@ -15,7 +15,7 @@ function getWeatherByCity(city){
             response.json()
             .then (function(data) {
                 //Create new fetch to obtain data of UV index.
-                var apiOnecallUrl = "http://api.openweathermap.org/data/2.5/onecall?lat="+data.coord.lat+"&lon="+data.coord.lon+"&units=imperial&"+apiKey;
+                var apiOnecallUrl = "https://api.openweathermap.org/data/2.5/onecall?lat="+data.coord.lat+"&lon="+data.coord.lon+"&units=imperial&"+apiKey;
                 fetch(apiOnecallUrl)
                 .then(function(response){
                     if (response.ok){

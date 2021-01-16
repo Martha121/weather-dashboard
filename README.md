@@ -1,6 +1,6 @@
 # weather-dashboard
 ## Description
-This is  an application to find current and 5 Day forecast weather conditions of a given City.We use the Open Weather API for the server side API to get the data object.
+This is  an application to find current and 5 Day forecast weather conditions of a given City.We use the Open Weather API to retrieve the data object.
 The page will display the current weather in this format:
 -City name, date and Icon.
 -Temperature

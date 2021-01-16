@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    
     <title>Weather-Dashboard</title>
 </head>
 <body >
@@ -14,12 +14,12 @@
     </nav>
     <div class="container">
         <div class="row">
-            <div class="col-4 card bg-light">
+            <div class="col-4 bg-light">
                 <p class="text-md-left my-2 font-weight-bold">Search for a City:</p>
                 <div class="input-group mb-3">
                     <input id="city-input" type="text" class="form-control" placeholder="" aria-label="Enter city name">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="button" id="search-button">
+                        <button class="btn btn-primary" type="button" id="search-button" onclick="searchBttnClicked()">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
@@ -27,16 +27,13 @@
                 <form id="history"></form>
             </div>
             <div class="col-8">
-                <div class="row mr-0">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-12 card card-body">
-                                
-                            </div>
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-12 card card-body" id="city-data">
+                            
                         </div>
                     </div>
-                </div>
-                <div class="row">
+                    <div class="row">
                     <div class="col-12">
                         <h3>5-Day Forecast</h3>
                     </div>
@@ -53,6 +50,6 @@
     </div>
 
 <!--Code to Jvascript File-->
-<script src="script.js"></script>
+<script src="./assets/js/weather.js"></script>
 </body>
 </html>

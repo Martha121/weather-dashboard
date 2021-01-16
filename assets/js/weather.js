@@ -2,7 +2,14 @@ var arrSearchHistory = [];
 
 // Gets the search history when this file is loaded
 getSearchHistory();
-//localStorage.clear();
+
+function clearHistory(){
+    // Clear the local storage
+    localStorage.clear();
+    // Reload page
+    document.location.replace("./index.html");
+}
+
 // function to access the city's information based on user's input
 var getWeatherByCity =function(city){
     var apiKey = "id=524901&appid=8d033d7f143f0e2af2920c11bc814694";
@@ -150,6 +157,10 @@ function getSearchHistory(){
     if( arrToLoad = JSON.parse(window.localStorage.getItem("search_history"))){
         arrSearchHistory = arrToLoad;
     }
+    displayHistory();
+}
+
+function displayHistory(){
     var cityList=document.getElementById("history");
     cityList.innerHTML = "";
     var itemId = 0;
@@ -166,6 +177,6 @@ function getSearchHistory(){
             historyContainer.addEventListener("click",bttnSearchHistoryClick);
             cityList.append(historyContainer);
         }  
-                
     }
+
 }
